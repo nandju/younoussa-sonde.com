@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Menu, X, Home, Star, MapPin, Building, Palette, DollarSign } from "lucide-react"
+import { Menu, X, Star, MapPin, Building, Palette, DollarSign, MoveUpRight } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
+
 
 export default function Header() {
   const [activeTab, setActiveTab] = useState("location")
@@ -44,12 +46,14 @@ export default function Header() {
       {/* Barre de navigation */}
       <nav className="relative z-50 px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
-            <div className="bg-[#EADD8E] p-2 rounded-lg">
-              <Home className="w-8 h-8 text-[#252525]" />
-            </div>
-            <span className="ml-3 text-2xl font-bold text-white">ImmoBel</span>
+            <Image
+              src="/assets/images/logo-sans-fond.png" // Remplace ce chemin par le tien si différent
+              alt="Logo Joya Immo"
+              width={120} // Ajuste la taille si besoin
+              height={40}
+              className="rounded-lg"
+            />
           </div>
 
           {/* Navigation Desktop */}
@@ -125,20 +129,27 @@ export default function Header() {
           {/* Titre principal */}
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <div className="flex items-center justify-center mb-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-white leading-tight">
                 Nous Apportons une Nouvelle
               </h1>
             </div>
             <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#EADD8E]">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-[#EADD8E]">
                 Expérience de Votre
               </span>
-              <div className="bg-[#EADD8E]/20 backdrop-blur-sm p-3 rounded-2xl border border-[#EADD8E]/30">
-                <Home className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#EADD8E]" />
-              </div>
+            <div className="hidden md:block bg-[#EADD8E]/20 backdrop-blur-sm p-3 rounded-2xl border border-[#EADD8E]/30">
+              <Image
+                src="/assets/images/illustrations/page-accueil/mini-house.png" // remplace par le chemin réel de ton image
+                alt="Logo Joya Immo"
+                width={64} // ou ajuste à ta convenance
+                height={64}
+                className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 object-contain"
+              />
+            </div>
+
             </div>
             <div className="mb-8">
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-white">
                 Bien Immobilier de Rêve
               </span>
             </div>
@@ -161,10 +172,11 @@ export default function Header() {
           </div>
 
           {/* Formulaire de recherche */}
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto my-8">
             <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20">
               {/* Onglets */}
-              <div className="flex space-x-3 mb-8">
+              <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-2">
+                <div className="flex space-x-3 mb-8">
                 <button
                   onClick={() => setActiveTab("location")}
                   className={`px-8 py-3 rounded-full text-base font-semibold transition-all duration-300 ${
@@ -186,85 +198,84 @@ export default function Header() {
                   Achat
                 </button>
               </div>
-
-              {/* Champs du formulaire */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div className="group">
-                  <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
-                    <MapPin className="w-4 h-4 mr-2 text-[#A07539]" />
-                    Localisation
-                  </label>
-                  <Input 
-                    placeholder="Choisir une localisation" 
-                    className="w-full h-12 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl transition-colors"
-                  />
-                </div>
-                <div className="group">
-                  <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
-                    <Building className="w-4 h-4 mr-2 text-[#A07539]" />
-                    Type de Bien
-                  </label>
-                  <Select>
-                    <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl">
-                      <SelectValue placeholder="Maison Villa" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="villa">Maison Villa</SelectItem>
-                      <SelectItem value="appartement">Appartement</SelectItem>
-                      <SelectItem value="condo">Condominium</SelectItem>
-                      <SelectItem value="maison-ville">Maison de Ville</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="group">
-                  <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
-                    <Palette className="w-4 h-4 mr-2 text-[#A07539]" />
-                    Style Architectural
-                  </label>
-                  <Select>
-                    <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl">
-                      <SelectValue placeholder="Industriel" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="industriel">Industriel</SelectItem>
-                      <SelectItem value="moderne">Moderne</SelectItem>
-                      <SelectItem value="traditionnel">Traditionnel</SelectItem>
-                      <SelectItem value="contemporain">Contemporain</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="group">
-                  <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
-                    <DollarSign className="w-4 h-4 mr-2 text-[#A07539]" />
-                    Gamme de Prix
-                  </label>
-                  <Input 
-                    placeholder="120 000€ - 150 000€" 
-                    className="w-full h-12 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Bouton de recherche et évaluations */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                <Button className="w-full sm:w-auto bg-[#252525] hover:bg-[#A07539] text-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105">
-                  <Search className="w-5 h-5 mr-3" />
-                  Rechercher
-                </Button>
-
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2 bg-[#EADD8E]/20 px-4 py-2 rounded-full">
-                    <Star className="w-5 h-5 text-[#EADD8E] fill-current" />
-                    <span className="text-base font-bold text-[#252525]">4.8</span>
-                  </div>
-                  <div className="flex -space-x-3">
+              <div className="flex flex-col items-start md:items-end space-x-4 mb-2">
+                    <div className="flex -space-x-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#EADD8E] to-[#A07539] border-3 border-white shadow-lg" />
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#A07539] to-[#252525] border-3 border-white shadow-lg" />
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#252525] to-[#EADD8E] border-3 border-white shadow-lg" />
                   </div>
+                  <div className="flex items-center">
+                  <div className="flex items-center space-x-2 bg-[#EADD8E]/20 px-4 py-2 rounded-full">
+                    <Star className="w-5 h-5 text-[#EADD8E] fill-current" />
+                    <span className="text-base font-bold text-[#252525]">4.8</span>
+                  </div>
                   <span className="text-sm text-gray-600 font-medium">3k+ avis clients</span>
+                  </div>
                 </div>
               </div>
+              
+
+            {/* Champs du formulaire */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 place-items-end gap-6 mb-8">
+              <div className="flex flex-col items-start w-full gap-2">
+                <label className="text-sm font-semibold text-gray-700 w-32 shrink-0">
+                  Localisation
+                </label>
+                <Input 
+                  placeholder="Choisir une localisation" 
+                  className="w-full h-auto px-4 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl transition-colors"
+                />
+              </div>
+
+              <div className="flex flex-col items-start w-full gap-2">
+                <label className="text-sm font-semibold text-gray-700 w-32 shrink-0">
+                  Type de Bien
+                </label>
+                <Select>
+                  <SelectTrigger className="w-full h-auto px-4 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl">
+                    <SelectValue placeholder="Maison Villa" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="villa">Maison Villa</SelectItem>
+                    <SelectItem value="appartement">Appartement</SelectItem>
+                    <SelectItem value="condo">Condominium</SelectItem>
+                    <SelectItem value="maison-ville">Maison de Ville</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex flex-col items-start w-full gap-2">
+                <label className="text-sm font-semibold text-gray-700 w-32 shrink-0">
+                  Style Archi.
+                </label>
+                <Select>
+                  <SelectTrigger className="w-full h-auto px-4 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl">
+                    <SelectValue placeholder="Industriel" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="industriel">Industriel</SelectItem>
+                    <SelectItem value="moderne">Moderne</SelectItem>
+                    <SelectItem value="traditionnel">Traditionnel</SelectItem>
+                    <SelectItem value="contemporain">Contemporain</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex flex-col items-start w-full gap-2">
+                <label className="text-sm font-semibold text-gray-700 w-32 shrink-0">
+                  Gamme de Prix
+                </label>
+                <Input 
+                  placeholder="100 000F - 450 000F" 
+                  className="w-full h-auto px-4 border-2 border-gray-200 focus:border-[#EADD8E] rounded-xl transition-colors"
+                />
+              </div>
+
+              <Button className="w-full h-auto bg-[#252525] hover:bg-[#A07539] text-white px-10 rounded-xl text-base font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105">
+                Rechercher
+              </Button>
+            </div>
+
             </div>
           </div>
         </div>
