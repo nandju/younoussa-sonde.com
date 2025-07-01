@@ -46,7 +46,7 @@ export default function HowItWorksSection() {
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 sm:mb-16 lg:mb-20">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 mb-12 sm:mb-16 lg:mb-20">
             Comment ça fonctionne ?
             </h2>
 
@@ -78,7 +78,7 @@ export default function HowItWorksSection() {
                   </div>
                   <div>
                     <h3
-                      className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 transition-colors duration-300 ${
+                      className={`text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 transition-colors duration-300 ${
                         activeStep === index ? "text-gray-900" : "text-gray-400"
                       }`}
                     >
