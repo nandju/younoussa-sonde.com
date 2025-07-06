@@ -7,6 +7,7 @@ import ExplorePropertiesSection from "@/components/explore-properties/explore-pr
 import TopPicksSection from "@/components/top-picks/top-picks-section"
 import FAQSection from "@/components/faq/faq-section"
 import ContactSection from "@/components/contact/contact-section"
+import FooterSection from "@/components/footer"
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <TopPicksSection />
       <FAQSection />
       <ContactSection />
+      <FooterSection />
     </div>
   )
 }
