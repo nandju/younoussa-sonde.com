@@ -50,7 +50,7 @@ const properties = [
     name: "Penthouse Deux Plateaux",
     location: "Deux Plateaux, Abidjan",
     price: "150.000.000 F CFA",
-    image: "/assets/images/illustrations/page-properties/items-1.jpg",
+    image: "/assets/images/illustrations/page-properties/items-6.jpg",
     color: "from-[#EADD8E]/90 to-[#A07539]/70",
   },
 ]
