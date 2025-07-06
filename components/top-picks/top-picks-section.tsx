@@ -4,80 +4,7 @@ import Image from "next/image"
 import { useState, useRef } from "react"
 import { Heart, MapPin, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react"
 
-const properties = [
-  {
-    id: 1,
-    name: "Tranquil Hut",
-    location: "Lafayette, California",
-    price: "$40,000.00",
-    image: "/assets/images/illustrations/page-properties/items-1.jpg",
-    description:
-      "A peaceful retreat surrounded by nature, perfect for those seeking serenity and modern comfort in a tranquil setting.",
-  },
-  {
-    id: 2,
-    name: "Sunny Valley Casa",
-    location: "Stockton, New Hampshire",
-    price: "$29,000.00",
-    image: "/assets/images/illustrations/page-properties/items-2.jpg",
-    description:
-      "Bright and airy casa with stunning valley views, featuring contemporary design and premium amenities.",
-  },
-  {
-    id: 3,
-    name: "Relaxed Lodge",
-    location: "Syracuse, Connecticut",
-    price: "$10,800.00",
-    image: "/assets/images/illustrations/page-properties/items-3.jpg",
-    description:
-      "Cozy lodge perfect for weekend getaways, offering comfort and relaxation in a beautiful natural setting.",
-  },
-  {
-    id: 4,
-    name: "Happy Lagoon Farm",
-    location: "Pasadena, Oklahoma",
-    price: "$37,500.00",
-    image: "/assets/images/illustrations/page-properties/items-4.jpg",
-    description:
-      "Discover a tranquil oasis nestled amidst lush greenery at Happy Lagoon Farm. This charming property offers the perfect blend of modern comfort and rustic charm, making it an ideal retreat for those seeking peace and tranquility.",
-  },
-  {
-    id: 5,
-    name: "Ocean Breeze Villa",
-    location: "Malibu, California",
-    price: "$55,000.00",
-    image: "/assets/images/illustrations/page-properties/items-5.jpg",
-    description:
-      "Luxurious beachfront villa with panoramic ocean views and world-class amenities for the ultimate coastal experience.",
-  },
-  {
-    id: 6,
-    name: "Mountain Peak Cabin",
-    location: "Aspen, Colorado",
-    price: "$42,000.00",
-    image: "/assets/images/illustrations/page-properties/items-6.jpg",
-    description:
-      "Rustic mountain cabin with modern touches, offering breathtaking views and access to year-round outdoor activities.",
-  },
-  {
-    id: 7,
-    name: "Desert Oasis Resort",
-    location: "Scottsdale, Arizona",
-    price: "$33,500.00",
-    image: "/assets/images/illustrations/page-properties/items-1.jpg",
-    description:
-      "Stunning desert retreat with infinity pool and spa facilities, perfect for relaxation under the Arizona sun.",
-  },
-  {
-    id: 8,
-    name: "Lakeside Sanctuary",
-    location: "Lake Tahoe, Nevada",
-    price: "$48,000.00",
-    image: "/assets/images/illustrations/page-properties/items-2.jpg",
-    description:
-      "Elegant lakeside property with private dock and stunning water views, ideal for both relaxation and recreation.",
-  },
-]
+import { properties } from "./data"
 
 export default function TopPicksSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -119,9 +46,9 @@ export default function TopPicksSection() {
         <div className="flex items-center justify-between mb-8 sm:mb-12">
           <div>
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-600 text-sm font-medium mb-4">
-              POPULAR
+              POPULAIRE
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">Top Picks Rent Property</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900">Meilleurs choix de propriétés à louer</h2>
           </div>
 
           {/* Navigation Arrows */}
@@ -192,7 +119,7 @@ export default function TopPicksSection() {
                     </button>
                   </div>
 
-                  <div className="flex items-center text-gray-500 mb-3">
+                  <div className="flex items-center text-[#A07539] mb-3">
                     <MapPin className="w-4 h-4 mr-1" />
                     <span className="text-sm">{property.location}</span>
                   </div>

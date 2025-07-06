@@ -12,7 +12,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Badge À Propos */}
         <div className="flex justify-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-          <div className="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border-2 border-[#A07539] bg-white text-[#252525] text-xs sm:text-sm font-bold tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div className="inline-flex items-center px-6 py-2 rounded-full border border-gray-300 bg-white text-gray-600 text-sm font-medium">
             À PROPOS
           </div>
         </div>
