@@ -6,6 +6,7 @@ import HowItWorksSection from "@/components/how-it-works/how-it-works-section"
 import ExplorePropertiesSection from "@/components/explore-properties/explore-properties-section"
 import TopPicksSection from "@/components/top-picks/top-picks-section"
 import FAQSection from "@/components/faq/faq-section"
+import ContactSection from "@/components/contact/contact-section"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ExplorePropertiesSection />
       <TopPicksSection />
       <FAQSection />
+      <ContactSection />
     </div>
   )
 }
