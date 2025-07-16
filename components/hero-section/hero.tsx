@@ -63,7 +63,7 @@ export default function Hero() {
             alt="Leah Remini - Professional Portrait"
             width={600}
             height={800}
-            className="w-full h-auto object-cover max-w-md lg:max-w-lg xl:max-w-xl"
+            className="w-full h-screen object-cover max-w-md lg:max-w-lg xl:max-w-xl"
             priority
           />
         </motion.div>
