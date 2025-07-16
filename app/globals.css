@@ -104,7 +104,7 @@
 body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--playfair, Arial, Helvetica, sans-serif);
+  font-family: var(--playfair, --poppins, Arial, Helvetica, sans-serif);
 }
 
 .dark {

@@ -1,14 +1,13 @@
-import Header from "@/components/header"
+import Hero from "@/components/hero-section/hero"
+import Header from "@/components/navbar"
 
-import Footer from "@/components/footer"
-import FooterSection from "@/components/footer"
+
 
 export default function Home() {
   return (
     <div>
       <Header />
-
-      <FooterSection />
+      <Hero />
     </div>
   )
 }
