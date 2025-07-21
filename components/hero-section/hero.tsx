@@ -22,7 +22,7 @@ export default function Hero() {
       {/* Image de fond complète */}
       <div className="absolute inset-0">
         <Image
-          src="/assets/images/backgrounds/background-horizontal.jpg"
+          src="/assets/images/backgrounds/background-black-gray.jpg"
           alt="Background"
           fill
           className="object-cover"
@@ -59,7 +59,7 @@ export default function Hero() {
           />
 
           <Image
-            src="/assets/images/illustrations/page-accueil/photo2-removebg-preview.png"
+            src="/assets/images/illustrations/page-accueil/photo2-removebg-preview-Pica.png"
             alt="Leah Remini - Professional Portrait"
             width={600}
             height={800}

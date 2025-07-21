@@ -5,7 +5,7 @@ import Header from "@/components/navbar"
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen">
       <Header />
       <Hero />
     </div>
