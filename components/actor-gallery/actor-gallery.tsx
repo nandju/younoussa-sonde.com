@@ -101,7 +101,8 @@ export default function ActorGallery() {
   }
 
   return (
-    <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#DCDCDC] overflow-hidden">
+    // <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#DCDCDC] overflow-hidden">
+      <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#3C3C3C] overflow-hidden">
       {/* Background pattern */}
       <motion.div
         className="absolute inset-0 opacity-5"
@@ -141,7 +142,8 @@ export default function ActorGallery() {
           </motion.div>
 
           <motion.h2
-            className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-[#3C3C3C] mb-4 drop-shadow-sm"
+            // className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-[#3C3C3C] mb-4 drop-shadow-sm"
+            className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-[#DCDCDC] mb-4 drop-shadow-sm"
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{
               opacity: isInView ? 1 : 0,
@@ -153,7 +155,8 @@ export default function ActorGallery() {
           </motion.h2>
 
           <motion.p
-            className="text-lg text-[#474646] font-poppins max-w-2xl mx-auto"
+            // className="text-lg text-[#474646] font-poppins max-w-2xl mx-auto"
+            className="text-lg text-[#DCDCDC] font-poppins max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -229,8 +232,9 @@ export default function ActorGallery() {
                   initial={false}
                 >
                   <h3 className="text-[#DCDCDC] font-semibold text-lg mb-1 drop-shadow-sm">{item.title}</h3>
-                  <p className="text-[#616161] text-sm font-medium tracking-wider mb-2">{item.category}</p>
-                  <p className="text-[#DCDCDC]/90 text-sm leading-relaxed">{item.description}</p>
+                  {/* <p className="text-[#616161] text-sm font-medium tracking-wider mb-2">{item.category}</p> */}
+                  <p className="text-[#DCDCDC] text-sm font-medium tracking-wider font-poppins mb-2">{item.category}</p>
+                  <p className="text-[#DCDCDC]/90 text-sm leading-relaxed font-poppins">{item.description}</p>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -245,12 +249,14 @@ export default function ActorGallery() {
           transition={{ duration: 0.8, delay: 1.5 }}
         >
           <motion.button
-            className="group relative px-8 py-4 border-2 border-[#3C3C3C] text-[#3C3C3C] font-medium tracking-[0.2em] text-sm hover:border-[#616161] hover:text-[#616161] transition-all duration-500 rounded-full overflow-hidden flex items-center gap-3 mx-auto shadow-lg hover:shadow-xl"
+            // className="group relative px-8 py-4 border-2 border-[#3C3C3C] text-[#3C3C3C] font-medium tracking-[0.2em] text-sm hover:border-[#616161] hover:text-[#616161] transition-all duration-500 rounded-full overflow-hidden flex items-center gap-3 mx-auto shadow-lg hover:shadow-xl"
+            className="group relative px-8 py-4 border-2 border-[#616161]/50 text-[#DCDCDC] font-medium tracking-[0.2em] text-sm hover:border-[#DCDCDC] hover:text-[#616161] transition-all duration-500 overflow-hidden flex items-center gap-3 mx-auto shadow-lg hover:shadow-xl"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             {/* Button background effect */}
             <motion.div
+              // className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               style={{
                 background: 'linear-gradient(135deg, #616161/10 0%, #474646/10 100%)'
@@ -309,8 +315,9 @@ export default function ActorGallery() {
               transition={{ delay: 0.2 }}
             >
               <h3 className="text-[#DCDCDC] text-2xl font-semibold mb-2 drop-shadow-lg">{selectedImage.title}</h3>
-              <p className="text-[#616161] text-sm font-medium tracking-wider mb-2">{selectedImage.category}</p>
-              <p className="text-[#DCDCDC]/90 leading-relaxed">{selectedImage.description}</p>
+              <p className="text-[#DCDCDC] text-sm font-medium tracking-wider font-poppins mb-2">{selectedImage.category}</p>
+              {/* <p className="text-[#616161] text-sm font-medium tracking-wider mb-2">{selectedImage.category}</p> */}
+              <p className="text-[#DCDCDC]/90 leading-relaxed font-poppins">{selectedImage.description}</p>
             </motion.div>
 
             <button
