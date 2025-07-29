@@ -1,6 +1,7 @@
 import Hero from "@/components/hero-section/hero"
 import Header from "@/components/navbar"
 import ShortBio from "@/components/short-bio/short-bio"
+import Showreel from "@/components/showreel/showreel"
 
 
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <ShortBio />
+      <Showreel />
     </div>
   )
 }
