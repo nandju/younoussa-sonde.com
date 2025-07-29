@@ -37,7 +37,7 @@ const filmItems: FilmItem[] = [
     role: "Voleur",
     poster: "/assets/images/illustrations/page-accueil/film2.png",
     trailer: "https://web.facebook.com/sonde2barca/videos/966481178060339",
-    description: "« Nul ne résiste à la tentation », tel est le slogan qui décrit la quintessence de la trame de cette nouvelle production 100% locale. En effet, la série de 44 épisodes raconte les aventures d’Isabelle, une jeune fille moderne addicte aux réseaux sociaux. Cette dernière douée d’une intelligence fine, use de son charme pour résoudre des enquêtes 'spéciales' et de tout ordre.",
+    description: "« Nul ne résiste à la tentation », tel est le slogan qui décrit la quintessence de la trame de cette nouvelle production 100% locale. En effet, la série de 44 épisodes raconte les aventures d'Isabelle, une jeune fille moderne addicte aux réseaux sociaux. Cette dernière douée d'une intelligence fine, use de son charme pour résoudre des enquêtes 'spéciales' et de tout ordre.",
   },
   {
     id: 3,
@@ -64,10 +64,13 @@ export default function Filmography() {
   }
 
   return (
-    <section ref={containerRef} className="relative bg-gray-900 overflow-hidden">
+    <section ref={containerRef} className="relative overflow-hidden" style={{ backgroundColor: '#3C3C3C' }}>
       {/* Background texture */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+        className="absolute inset-0"
+        style={{ 
+          background: `linear-gradient(135deg, #3C3C3C 0%, #474646 50%, #616161 100%)` 
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
@@ -77,7 +80,7 @@ export default function Filmography() {
       <motion.div
         className="absolute inset-0 opacity-5"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, #DCDCDC 1px, transparent 0)`,
           backgroundSize: "60px 60px",
         }}
         initial={{ opacity: 0 }}
@@ -96,7 +99,8 @@ export default function Filmography() {
           {filmItems.map((film, index) => (
             <motion.div
               key={film.id}
-              className="group relative overflow-hidden cursor-pointer min-h-screen w-auto bg-gray-800"
+              className="group relative overflow-hidden cursor-pointer min-h-screen w-auto"
+              style={{ backgroundColor: '#474646' }}
               initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
               animate={{
                 opacity: isInView ? 1 : 0,
@@ -117,38 +121,46 @@ export default function Filmography() {
 
               {/* Overlay */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500"
+                className="absolute inset-0 opacity-60 group-hover:opacity-90 transition-opacity duration-500"
+                style={{ 
+                  background: `linear-gradient(to top, rgba(60, 60, 60, 0.95) 0%, rgba(71, 70, 70, 0.4) 50%, transparent 100%)` 
+                }}
                 initial={false}
               />
 
               {/* Number Badge */}
               <motion.div
-                className="absolute top-6 left-6 w-14 h-14 bg-yellow-400/90 backdrop-blur-sm rounded-full flex items-center justify-center"
+                className="absolute top-6 left-6 w-14 h-14 backdrop-blur-sm rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'rgba(220, 220, 220, 0.9)' }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
               >
-                <span className="text-lg font-bold text-gray-900">{film.id.toString().padStart(2, "0")}</span>
+                <span className="text-lg font-bold" style={{ color: '#3C3C3C' }}>
+                  {film.id.toString().padStart(2, "0")}
+                </span>
               </motion.div>
 
               {/* Play Button */}
               <motion.div
-                className="absolute top-6 right-6 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500"
+                className="absolute top-6 right-6 w-12 h-12 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500"
+                style={{ backgroundColor: 'rgba(220, 220, 220, 0.2)' }}
                 whileHover={{ scale: 1.1 }}
                 onClick={(e) => {
                   e.stopPropagation()
                   if (film.trailer) openTrailer(film.trailer)
                 }}
               >
-                <Play size={20} className="text-white ml-1" />
+                <Play size={20} style={{ color: '#DCDCDC' }} className="ml-1" />
               </motion.div>
 
               {/* Year Badge */}
               <motion.div
-                className="absolute top-6 right-20 px-3 py-1 bg-gray-900/80 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"
+                className="absolute top-6 right-20 px-3 py-1 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"
+                style={{ backgroundColor: 'rgba(60, 60, 60, 0.8)' }}
                 initial={false}
               >
-                <span className="text-sm text-white font-medium flex items-center gap-1">
+                <span className="text-sm font-medium flex items-center gap-1" style={{ color: '#DCDCDC' }}>
                   <Calendar size={12} />
                   {film.year}
                 </span>
@@ -157,10 +169,11 @@ export default function Filmography() {
               {/* Awards Badge */}
               {film.awards && (
                 <motion.div
-                  className="absolute top-20 right-6 px-3 py-1 bg-yellow-400/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"
+                  className="absolute top-20 right-6 px-3 py-1 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"
+                  style={{ backgroundColor: 'rgba(220, 220, 220, 0.9)' }}
                   initial={false}
                 >
-                  <span className="text-xs text-gray-900 font-medium flex items-center gap-1">
+                  <span className="text-xs font-medium flex items-center gap-1" style={{ color: '#3C3C3C' }}>
                     <Award size={10} />
                     AWARD
                   </span>
@@ -170,14 +183,24 @@ export default function Filmography() {
               {/* Film Information */}
               <motion.div className="absolute bottom-0 left-0 right-0 p-6" initial={false}>
                 <motion.div
-                  className="backdrop-blur-sm bg-black/40 p-6 rounded-xl border border-white/10"
+                  className="backdrop-blur-sm p-6 rounded-xl border"
+                  style={{ 
+                    backgroundColor: 'rgba(60, 60, 60, 0.4)',
+                    borderColor: 'rgba(220, 220, 220, 0.1)'
+                  }}
                   initial={false}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="text-white font-bold text-xl lg:text-2xl mb-2 leading-tight">{film.title}</h3>
-                      <p className="text-yellow-400 text-sm font-semibold tracking-wider mb-1">{film.category}</p>
-                      <p className="text-gray-300 text-sm">{film.role}</p>
+                      <h3 className="font-bold text-xl lg:text-2xl mb-2 leading-tight" style={{ color: '#DCDCDC' }}>
+                        {film.title}
+                      </h3>
+                      <p className="text-sm font-semibold font-poppins tracking-wider mb-1" style={{ color: '#DCDCDC' }}>
+                        {film.category}
+                      </p>
+                      <p className="text-sm font-poppins" style={{ color: '#DCDCDC' }}>
+                        {film.role}
+                      </p>
                     </div>
                   </div>
 
@@ -188,12 +211,18 @@ export default function Filmography() {
                     whileHover={{ height: "auto", opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="text-gray-300 text-sm leading-relaxed pt-3 border-t border-white/20">
+                    <p className="text-sm leading-relaxed pt-3 border-t" 
+                       style={{ 
+                         color: '#DCDCDC',
+                         borderColor: 'rgba(220, 220, 220, 0.2)'
+                       }}>
                       {film.description}
                     </p>
                     {film.awards && (
-                      <div className="mt-3 pt-3 border-t border-yellow-400/30">
-                        <p className="text-yellow-400 text-xs font-medium">🏆 {film.awards.join(", ")}</p>
+                      <div className="mt-3 pt-3 border-t" style={{ borderColor: 'rgba(97, 97, 97, 0.3)' }}>
+                        <p className="text-xs font-medium" style={{ color: '#616161' }}>
+                          🏆 {film.awards.join(", ")}
+                        </p>
                       </div>
                     )}
                   </motion.div>
@@ -207,14 +236,16 @@ export default function Filmography() {
       {/* Film Detail Modal */}
       {selectedFilm && (
         <motion.div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-6"
+          className="fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center p-6"
+          style={{ backgroundColor: 'rgba(60, 60, 60, 0.95)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setSelectedFilm(null)}
         >
           <motion.div
-            className="relative max-w-4xl w-full bg-gray-900 rounded-2xl overflow-hidden"
+            className="relative max-w-4xl w-full rounded-2xl overflow-hidden"
+            style={{ backgroundColor: '#474646' }}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
@@ -231,10 +262,19 @@ export default function Filmography() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+              <div 
+                className="absolute inset-0"
+                style={{ 
+                  background: `linear-gradient(to top, #474646 0%, transparent 50%, transparent 100%)` 
+                }}
+              />
 
               <button
-                className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors duration-300"
+                className="absolute top-4 right-4 w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300"
+                style={{ 
+                  backgroundColor: 'rgba(220, 220, 220, 0.2)',
+                  color: '#DCDCDC'
+                }}
                 onClick={() => setSelectedFilm(null)}
               >
                 ×
@@ -242,7 +282,11 @@ export default function Filmography() {
 
               {selectedFilm.trailer && (
                 <button
-                  className="absolute bottom-4 right-4 px-4 py-2 bg-yellow-400 text-gray-900 rounded-full font-medium flex items-center gap-2 hover:bg-yellow-300 transition-colors duration-300"
+                  className="absolute bottom-4 right-4 px-4 py-2 rounded-full font-medium flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+                  style={{ 
+                    backgroundColor: '#DCDCDC',
+                    color: '#3C3C3C'
+                  }}
                   onClick={() => openTrailer(selectedFilm.trailer!)}
                 >
                   <Play size={16} />
@@ -255,28 +299,34 @@ export default function Filmography() {
             <div className="p-8">
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
                 <div>
-                  <h3 className="text-white text-3xl font-bold mb-2">{selectedFilm.title}</h3>
+                  <h3 className="text-3xl font-bold mb-2" style={{ color: '#DCDCDC' }}>
+                    {selectedFilm.title}
+                  </h3>
                   <div className="flex flex-wrap items-center gap-4 text-sm">
-                    <span className="text-yellow-400 font-semibold">{selectedFilm.category}</span>
-                    <span className="text-gray-400">•</span>
-                    <span className="text-gray-300">{selectedFilm.year}</span>
-                    <span className="text-gray-400">•</span>
-                    <span className="text-gray-300">{selectedFilm.role}</span>
+                    <span className="font-semibold" style={{ color: '#DCDCDC' }}>
+                      {selectedFilm.category}
+                    </span>
+                    <span style={{ color: '#DCDCDC' }}>•</span>
+                    <span style={{ color: '#DCDCDC' }}>{selectedFilm.year}</span>
+                    <span style={{ color: '#DCDCDC' }}>•</span>
+                    <span style={{ color: '#DCDCDC' }}>{selectedFilm.role}</span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-gray-300 leading-relaxed mb-6">{selectedFilm.description}</p>
+              <p className="leading-relaxed font-poppins mb-6" style={{ color: '#DCDCDC' }}>
+                {selectedFilm.description}
+              </p>
 
               {selectedFilm.awards && (
-                <div className="border-t border-gray-700 pt-6">
-                  <h4 className="text-yellow-400 font-semibold mb-3 flex items-center gap-2">
+                <div className="border-t pt-6" style={{ borderColor: '#616161' }}>
+                  <h4 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#616161' }}>
                     <Award size={16} />
                     Awards & Recognition
                   </h4>
                   <ul className="space-y-2">
                     {selectedFilm.awards.map((award, index) => (
-                      <li key={index} className="text-gray-300 text-sm">
+                      <li key={index} className="text-sm" style={{ color: '#DCDCDC' }}>
                         🏆 {award}
                       </li>
                     ))}
@@ -290,7 +340,8 @@ export default function Filmography() {
 
       {/* Decorative floating elements */}
       <motion.div
-        className="absolute top-20 left-10 w-2 h-2 bg-yellow-400/30 rounded-full"
+        className="absolute top-20 left-10 w-2 h-2 rounded-full"
+        style={{ backgroundColor: 'rgba(97, 97, 97, 0.3)' }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
         transition={{ duration: 0.8, delay: 1.5 }}
@@ -306,7 +357,8 @@ export default function Filmography() {
       />
 
       <motion.div
-        className="absolute bottom-20 right-10 w-3 h-3 bg-white/20 rounded-full"
+        className="absolute bottom-20 right-10 w-3 h-3 rounded-full"
+        style={{ backgroundColor: 'rgba(220, 220, 220, 0.2)' }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
         transition={{ duration: 0.8, delay: 1.7 }}
