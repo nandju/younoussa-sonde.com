@@ -96,7 +96,7 @@ export default function Showreel() {
               animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
               transition={{ duration: 1, delay: 1.2 }}
             >
-              OH MY GOD
+              SHOW REEL
             </motion.h2>
 
             <motion.p
@@ -105,7 +105,7 @@ export default function Showreel() {
               animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 1.4 }}
             >
-              SHOWREEL 2024
+              JANVIER 2023
             </motion.p>
           </motion.div>
 
@@ -119,7 +119,7 @@ export default function Showreel() {
             {/* Watch Here Button */}
             <motion.button
               onClick={openFacebookVideo}
-              className="group relative px-8 py-4 border-2 border-[#DCDCDC] text-[#DCDCDC] font-medium tracking-[0.2em] text-sm hover:border-[#616161] hover:text-[#616161] transition-all duration-500 rounded-full overflow-hidden flex items-center gap-3 shadow-lg hover:shadow-xl"
+              className="group relative px-8 py-4 border-2 border-[#DCDCDC] text-[#DCDCDC] font-medium tracking-[0.2em] text-sm hover:border-[#616161] hover:text-[#616161] transition-all duration-500 overflow-hidden flex items-center gap-3 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -133,7 +133,7 @@ export default function Showreel() {
               />
 
               {/* Button content */}
-              <span className="relative z-10">WATCH HERE</span>
+              <span className="relative z-10">REGARDEZ ICI</span>
               <ExternalLink size={16} className="relative z-10" />
 
               {/* Hover line effect */}
@@ -170,12 +170,12 @@ export default function Showreel() {
 
           {/* Subtitle */}
           <motion.p
-            className="mt-8 text-sm text-[#DCDCDC]/60 tracking-wide"
+            className="mt-8 text-sm font-poppins text-[#DCDCDC]/60 tracking-wide"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
           >
-            Click to view full showreel on Facebook
+            Cliquez pour voir la bande démo complète sur Facebook
           </motion.p>
         </div>
       </div>
