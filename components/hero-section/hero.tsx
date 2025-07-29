@@ -52,7 +52,8 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"
+            className="absolute inset-0  z-10"
+            // className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: imageInView ? 1 : 0 }}
             transition={{ duration: 1, delay: 1 }}

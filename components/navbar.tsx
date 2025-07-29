@@ -34,14 +34,22 @@ export default function Navbar() {
   ]
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
-    >
+<motion.nav
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    isScrolled
+      ? "bg-[#3C3C3C]/95 backdrop-blur-md shadow-xl border-b border-[#474646]"
+      : "bg-transparent"
+  }`}
+  style={{
+    background: isScrolled
+      ? 'linear-gradient(135deg, #3C3C3C 0%, #474646 100%)'
+      : 'transparent',
+  }}
+>
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -52,7 +60,7 @@ export default function Navbar() {
           >
             <Link
               href="/"
-              className="text-2xl lg:text-3xl font-light tracking-[0.2em] text-white hover:text-gray-400 transition-colors duration-300"
+              className="text-2xl lg:text-3xl font-light tracking-[0.2em] text-[#DCDCDC] hover:text-[#616161] transition-all duration-300 drop-shadow-sm"
             >
               LE PRINCE
             </Link>
@@ -76,10 +84,10 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="text-sm font-medium tracking-wider text-white hover:text-gray-400 transition-all duration-300 relative group"
+                    className="text-sm font-medium tracking-wider text-[#DCDCDC] hover:text-[#616161] transition-all duration-300 relative group px-2 py-1 rounded-md hover:bg-[#474646]/30"
                   >
                     {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#616161] to-[#DCDCDC] transition-all duration-300 group-hover:w-[calc(100%-1rem)] rounded-full"></span>
                   </Link>
                 </motion.div>
               ))}
@@ -87,7 +95,7 @@ export default function Navbar() {
 
             {/* Social Links */}
             <motion.div
-              className="flex items-center space-x-4 ml-8 pl-8 border-l border-gray-300"
+              className="flex items-center space-x-4 ml-8 pl-8 border-l border-[#616161]/40"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -96,12 +104,12 @@ export default function Navbar() {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="text-white hover:text-gray-400 transition-all duration-300 hover:scale-110"
+                  className="text-[#DCDCDC] hover:text-[#616161] transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-[#474646]/40 hover:shadow-lg"
                   aria-label={social.label}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <social.icon size={18} />
@@ -112,7 +120,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="lg:hidden text-white hover:text-gray-400 transition-colors duration-300"
+            className="lg:hidden text-[#DCDCDC] hover:text-[#616161] transition-colors duration-300 p-2 rounded-lg hover:bg-[#474646]/40"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -133,7 +141,12 @@ export default function Navbar() {
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <div className="py-4 space-y-4 bg-black/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
+          <div 
+            className="py-4 space-y-2 backdrop-blur-md rounded-xl mt-2 shadow-2xl border border-[#474646]/30"
+            style={{
+              background: 'linear-gradient(135deg, #474646 0%, #3C3C3C 100%)'
+            }}
+          >
             {navItems.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -146,7 +159,7 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="block px-6 py-2 text-sm font-medium tracking-wider text-gray-100 hover:text-white hover:bg-gray-800 transition-all duration-300"
+                  className="block mx-3 px-4 py-3 text-sm font-medium tracking-wider text-[#DCDCDC] hover:text-[#616161] hover:bg-[#616161]/20 transition-all duration-300 rounded-lg border border-transparent hover:border-[#616161]/30"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -155,7 +168,7 @@ export default function Navbar() {
             ))}
 
             <motion.div
-              className="flex justify-center space-x-6 pt-4 border-t border-gray-700 mx-6"
+              className="flex justify-center space-x-6 pt-4 border-t border-[#616161]/30 mx-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: isMobileMenuOpen ? 1 : 0,
@@ -167,7 +180,7 @@ export default function Navbar() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  className="text-[#DCDCDC] hover:text-[#616161] transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-[#616161]/20"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
