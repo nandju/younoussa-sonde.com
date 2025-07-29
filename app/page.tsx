@@ -1,3 +1,4 @@
+import ActorGallery from "@/components/actor-gallery/actor-gallery"
 import Hero from "@/components/hero-section/hero"
 import Header from "@/components/navbar"
 import ShortBio from "@/components/short-bio/short-bio"
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <ShortBio />
       <Showreel />
+      <ActorGallery />
     </div>
   )
 }
