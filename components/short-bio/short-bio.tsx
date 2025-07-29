@@ -43,7 +43,7 @@ export default function ShortBio() {
           <motion.div
             className="w-16 h-0.5"
             style={{
-              background: 'linear-gradient(to right, #616161, #DCDCDC)'
+              background: 'linear-gradient(to right, #616161, #474646)'
             }}
             initial={{ width: 0 }}
             animate={{ width: isInView ? 64 : 0 }}

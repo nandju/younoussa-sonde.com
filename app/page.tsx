@@ -1,4 +1,5 @@
 import ActorGallery from "@/components/actor-gallery/actor-gallery"
+import Filmography from "@/components/filmography/filmography"
 import Hero from "@/components/hero-section/hero"
 import Header from "@/components/navbar"
 import ShortBio from "@/components/short-bio/short-bio"
@@ -14,6 +15,7 @@ export default function Home() {
       <ShortBio />
       <Showreel />
       <ActorGallery />
+      <Filmography />
     </div>
   )
 }
