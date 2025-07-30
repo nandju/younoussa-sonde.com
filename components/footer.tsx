@@ -13,7 +13,7 @@ export default function FooterSection() {
       <motion.div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #3C3C3C 0%, #474646 50%, #3C3C3C 100%)'
+          background: 'linear-gradient(135deg, #3C3C3C 0%, #474646 50%, #616161 100%)'
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
@@ -186,75 +186,92 @@ export default function FooterSection() {
         </motion.div>
       </div>
 
-      {/* Enhanced decorative floating elements */}
+      {/* Enhanced decorative floating elements - Version corrigée */}
+
+      {/* Premier élément - Haut gauche */}
       <motion.div
         className="absolute top-20 left-10 w-2 h-2 rounded-full shadow-lg"
         style={{ backgroundColor: 'rgba(97, 97, 97, 0.4)' }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.4, 0.8, 0.4],
+          scale: [0, 1, 1.2, 1],
           y: [0, -20, 0],
-          opacity: [0.4, 0.8, 0.4],
-          scale: [1, 1.2, 1],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 4,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.2,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />
 
+      {/* Deuxième élément - Bas droit */}
       <motion.div
         className="absolute bottom-20 right-10 w-3 h-3 rounded-full shadow-lg"
         style={{ backgroundColor: 'rgba(220, 220, 220, 0.3)' }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.4 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.3, 0.6, 0.3],
+          scale: [0, 1, 1.3, 1],
           y: [0, 15, 0],
-          opacity: [0.3, 0.6, 0.3],
-          scale: [1, 1.3, 1],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 5,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.4,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />
 
+      {/* Troisième élément - Milieu droit */}
       <motion.div
         className="absolute top-1/2 right-20 w-1 h-1 rounded-full shadow-md"
         style={{ backgroundColor: 'rgba(97, 97, 97, 0.6)' }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.6 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, x: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.6, 1, 0.6],
+          scale: [0, 1, 1.5, 1],
           x: [0, -10, 0],
-          opacity: [0.6, 1, 0.6],
-          scale: [1, 1.5, 1],
+        } : {
+          opacity: 0,
+          scale: 0,
+          x: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 3,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.6,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />
 
+      {/* Quatrième élément - Haut gauche (1/3, 1/4) */}
       <motion.div
         className="absolute top-1/3 left-1/4 w-1.5 h-1.5 rounded-full"
         style={{ backgroundColor: 'rgba(220, 220, 220, 0.4)' }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.8 }}
-        animate={{
-          scale: [1, 1.5, 1],
-          opacity: [0.4, 0.8, 0.4],
+        initial={{ opacity: 0, scale: 0, rotate: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.4, 0.8, 0.4],
+          scale: [0, 1, 1.5, 1],
           rotate: [0, 180, 360],
+        } : {
+          opacity: 0,
+          scale: 0,
+          rotate: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 6,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.8,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />

@@ -333,32 +333,40 @@ export default function ActorGallery() {
       {/* Decorative floating elements with custom colors */}
       <motion.div
         className="absolute top-20 left-10 w-3 h-3 bg-[#616161]/40 rounded-full shadow-lg"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.4, 0.8, 0.4],
+          scale: 1,
           y: [0, -20, 0],
-          opacity: [0.4, 0.8, 0.4],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 5,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />
 
       <motion.div
         className="absolute bottom-20 right-10 w-2 h-2 bg-[#474646]/50 rounded-full shadow-lg"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.5, 0.8, 0.5],
+          scale: 1,
           y: [0, 15, 0],
-          opacity: [0.5, 0.8, 0.5],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 4,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.2,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />

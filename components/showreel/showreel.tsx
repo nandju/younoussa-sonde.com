@@ -180,51 +180,67 @@ export default function Showreel() {
         </div>
       </div>
 
-      {/* Decorative floating elements with custom colors */}
+      {/* Decorative floating elements with custom colors - Version corrigée */}
+
+      {/* Premier élément - Haut gauche */}
       <motion.div
         className="absolute top-20 left-10 w-3 h-3 bg-[#616161]/40 rounded-full shadow-lg"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.4, 0.8, 0.4],
+          scale: 1,
           y: [0, -30, 0],
-          opacity: [0.4, 0.8, 0.4],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 6,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />
 
+      {/* Deuxième élément - Bas droit */}
       <motion.div
         className="absolute bottom-20 right-10 w-2 h-2 bg-[#DCDCDC]/50 rounded-full shadow-lg"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.5, 0.8, 0.5],
+          scale: 1,
           y: [0, 25, 0],
-          opacity: [0.5, 0.8, 0.5],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 5,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.2,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />
 
+      {/* Troisième élément - Haut droit */}
       <motion.div
         className="absolute top-1/3 right-20 w-1 h-1 bg-[#616161]/70 rounded-full shadow-md"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.4 }}
-        animate={{
+        initial={{ opacity: 0, scale: 0, x: 0 }}
+        animate={isInView ? {
+          opacity: [0, 0.7, 1, 0.7],
+          scale: 1,
           x: [0, -15, 0],
-          opacity: [0.7, 1, 0.7],
+        } : {
+          opacity: 0,
+          scale: 0,
+          x: 0,
         }}
-        transition={{
+        transition={{ 
           duration: 4,
-          repeat: Number.POSITIVE_INFINITY,
+          delay: 2.4,
+          repeat: isInView ? Number.POSITIVE_INFINITY : 0,
           ease: "easeInOut",
         }}
       />

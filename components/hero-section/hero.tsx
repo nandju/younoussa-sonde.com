@@ -70,35 +70,47 @@ export default function Hero() {
         </motion.div>
 
         {/* Éléments flottants */}
+        {/* Premier élément flottant - Haut droit */}
         <motion.div
           className="absolute -top-4 -right-4 w-24 h-24 bg-white/30 backdrop-blur-md rounded-full"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: imageInView ? 1 : 0, scale: imageInView ? 1 : 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          animate={{
+          initial={{ opacity: 0, scale: 0, y: 0 }}
+          animate={imageInView ? {
+            opacity: 1,
+            scale: 1,
             y: [0, -10, 0],
+          } : {
+            opacity: 0,
+            scale: 0,
+            y: 0,
           }}
-          transition={{
+          transition={{ 
             duration: 3,
-            repeat: Number.POSITIVE_INFINITY,
+            delay: 1.2,
+            repeat: imageInView ? Number.POSITIVE_INFINITY : 0,
             ease: "easeInOut",
           }}
         />
 
-        <motion.div
-          className="absolute -bottom-6 -left-6 w-16 h-16 bg-gray-800/20 backdrop-blur-md rounded-full"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: imageInView ? 1 : 0, scale: imageInView ? 1 : 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        />
+        {/* Deuxième élément flottant - Bas gauche */}
+      <motion.div
+        className="absolute -bottom-6 -left-6 w-16 h-16 bg-gray-800/20 backdrop-blur-md rounded-full"
+        initial={{ opacity: 0, scale: 0, y: 0 }}
+        animate={imageInView ? {
+          opacity: 1,
+          scale: 1,
+          y: [0, 10, 0],
+        } : {
+          opacity: 0,
+          scale: 0,
+          y: 0,
+        }}
+        transition={{ 
+          duration: 4,
+          delay: 1.4,
+          repeat: imageInView ? Number.POSITIVE_INFINITY : 0,
+          ease: "easeInOut",
+        }}
+      />
       </motion.div>
 
       {/* Indicateur de scroll */}

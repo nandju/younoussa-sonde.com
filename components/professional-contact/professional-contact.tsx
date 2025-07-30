@@ -488,40 +488,51 @@ export default function ProfessionalContact() {
         </div>
       </div>
 
-      {/* Decorative floating elements */}
-      <motion.div
-        className="absolute top-20 left-10 w-3 h-3 rounded-full"
-        style={{ backgroundColor: 'rgba(97, 97, 97, 0.3)' }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
-        animate={{
-          y: [0, -20, 0],
-          opacity: [0.3, 0.7, 0.3],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
+    {/* Decorative floating elements - Version corrigée */}
 
-      <motion.div
-        className="absolute bottom-20 right-10 w-2 h-2 rounded-full"
-        style={{ backgroundColor: 'rgba(220, 220, 220, 0.4)' }}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
-        animate={{
-          y: [0, 15, 0],
-          opacity: [0.4, 0.8, 0.4],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
+    {/* Premier élément décoratif - Haut gauche */}
+    <motion.div
+      className="absolute top-20 left-10 w-3 h-3 rounded-full"
+      style={{ backgroundColor: 'rgba(97, 97, 97, 0.3)' }}
+      initial={{ opacity: 0, scale: 0, y: 0 }}
+      animate={isInView ? {
+        opacity: [0, 0.3, 0.7, 0.3],
+        scale: 1,
+        y: [0, -20, 0],
+      } : {
+        opacity: 0,
+        scale: 0,
+        y: 0,
+      }}
+      transition={{ 
+        duration: 6,
+        delay: 2,
+        repeat: isInView ? Number.POSITIVE_INFINITY : 0,
+        ease: "easeInOut",
+      }}
+    />
+
+    {/* Deuxième élément décoratif - Bas droit */}
+    <motion.div
+      className="absolute bottom-20 right-10 w-2 h-2 rounded-full"
+      style={{ backgroundColor: 'rgba(220, 220, 220, 0.4)' }}
+      initial={{ opacity: 0, scale: 0, y: 0 }}
+      animate={isInView ? {
+        opacity: [0, 0.4, 0.8, 0.4],
+        scale: 1,
+        y: [0, 15, 0],
+      } : {
+        opacity: 0,
+        scale: 0,
+        y: 0,
+      }}
+      transition={{ 
+        duration: 5,
+        delay: 2.2,
+        repeat: isInView ? Number.POSITIVE_INFINITY : 0,
+        ease: "easeInOut",
+      }}
+    />
     </section>
   )
 }
