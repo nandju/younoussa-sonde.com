@@ -18,12 +18,11 @@ export default function Navbar() {
   }, [])
 
   const navItems = [
-    { name: "BIO", href: "/bio" },
-    { name: "BOOK", href: "/book" },
-    { name: "FILMOGRAPHY", href: "/filmography" },
-    { name: "REPRESENT", href: "/represent" },
-    { name: "CHARITIES", href: "/charities" },
-    { name: "FANS", href: "/fans" },
+    { name: "A PROPOS", href: "#propos" },
+    { name: "SHOWREEL", href: "#showreel" },
+    { name: "GALERIE", href: "#galerie" },
+    { name: "FILMOGRAPHIE", href: "#filmographie" },
+    { name: "CONTACTS", href: "#contacts" },
   ]
 
   const socialLinks = [

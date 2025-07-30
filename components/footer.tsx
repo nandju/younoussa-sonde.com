@@ -1,229 +1,274 @@
 "use client"
 
-import Image from "next/image"
-import Link from "next/link"
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
 
 export default function FooterSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" })
+  
   return (
-    <footer className="relative overflow-hidden">
-      {/* Background with Image and Overlay */}
-      <div className="absolute inset-0">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/assets/images/backgrounds/background-1.jpg" // Remplacez par le chemin de votre image
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
+    <section id="propos" ref={containerRef} className="relative overflow-hidden py-16" style={{ backgroundColor: '#3C3C3C' }}>
+      {/* Background texture overlay */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, #3C3C3C 0%, #474646 50%, #3C3C3C 100%)'
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
+
+      {/* Subtle pattern overlay */}
+      <motion.div
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #DCDCDC 1px, transparent 0)`,
+          backgroundSize: "50px 50px",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 0.05 : 0 }}
+        transition={{ duration: 2, delay: 0.5 }}
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+        {/* Decorative line above copyright */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <motion.div
+            className="h-0.5"
+            style={{ 
+              background: `linear-gradient(to right, transparent 0%, #616161 30%, #DCDCDC 50%, #616161 70%, transparent 100%)` 
+            }}
+            initial={{ width: 0 }}
+            animate={{ width: isInView ? 200 : 0 }}
+            transition={{ duration: 1.2, delay: 0.6 }}
           />
-        </div>
-        
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
-        
-        {/* Color Overlay */}
-        {/* <div className="absolute inset-0" style={{ backgroundColor: 'rgba(37, 37, 37, 0.8)' }}> */}
-          {/* Decorative Pattern */}
-          {/* <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 rounded-full" 
-                 style={{ backgroundColor: '#EADD8E' }}></div>
-            <div className="absolute bottom-0 right-0 w-48 h-48 rounded-full" 
-                 style={{ backgroundColor: '#A07539' }}></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full" 
-                 style={{ backgroundColor: '#EADD8E' }}></div>
-          </div> */}
-        {/* </div> */}
+        </motion.div>
+
+        {/* Copyright container with enhanced styling */}
+        <motion.div
+          className="backdrop-blur-sm p-8 rounded-2xl relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(71, 70, 70, 0.4) 0%, rgba(60, 60, 60, 0.4) 100%)',
+            border: '1px solid rgba(220, 220, 220, 0.1)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+          }}
+          initial={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
+          animate={{
+            opacity: isInView ? 1 : 0,
+            scale: isInView ? 1 : 0.9,
+            filter: isInView ? "blur(0px)" : "blur(15px)",
+          }}
+          transition={{ duration: 1.5, delay: 0.8 }}
+        >
+          {/* Subtle glow effect inside container */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl"
+            style={{
+              background: `radial-gradient(circle at center, rgba(97, 97, 97, 0.1) 0%, transparent 70%)`
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isInView ? 1 : 0 }}
+            transition={{ duration: 2, delay: 1.2 }}
+          />
+
+          {/* Copyright symbol with special animation */}
+          <motion.div
+            className="flex items-center justify-center gap-3 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            <motion.span
+              className="text-2xl font-bold"
+              style={{ color: '#616161' }}
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ 
+                scale: isInView ? 1 : 0, 
+                rotate: isInView ? 0 : -180 
+              }}
+              transition={{ duration: 1, delay: 1.2, type: "spring", bounce: 0.4 }}
+            >
+              ©
+            </motion.span>
+            
+            <motion.span
+              className="text-xl font-semibold tracking-wider"
+              style={{ color: '#DCDCDC' }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -20 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+            >
+              {new Date().getFullYear()}
+            </motion.span>
+          </motion.div>
+
+          {/* Main copyright text */}
+          <motion.div
+            className="space-y-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+          >
+            <motion.p
+              className="text-lg font-medium tracking-wide"
+              style={{ color: '#DCDCDC' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isInView ? 1 : 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+            >
+              By{" "}
+              <motion.span
+                className="font-bold"
+                style={{ color: '#616161' }}
+                whileHover={{ 
+                  color: '#DCDCDC',
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                Younoussa Sonde
+              </motion.span>
+            </motion.p>
+            
+            <motion.p
+              className="text-sm opacity-80"
+              style={{ color: '#DCDCDC' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isInView ? 0.8 : 0 }}
+              transition={{ duration: 0.8, delay: 1.6 }}
+            >
+              Tous droits réservés
+            </motion.p>
+          </motion.div>
+
+          {/* Animated underline */}
+          <motion.div
+            className="mt-6 flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isInView ? 1 : 0 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
+          >
+            <motion.div
+              className="h-0.5 rounded-full"
+              style={{ 
+                background: `linear-gradient(to right, #616161, #DCDCDC, #616161)` 
+              }}
+              initial={{ width: 0 }}
+              animate={{ width: isInView ? 120 : 0 }}
+              transition={{ duration: 1, delay: 1.9 }}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Decorative line below copyright */}
+        <motion.div
+          className="flex justify-center mt-8"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 2 }}
+        >
+          <motion.div
+            className="h-0.5"
+            style={{ 
+              background: `linear-gradient(to right, transparent 0%, #616161 30%, #DCDCDC 50%, #616161 70%, transparent 100%)` 
+            }}
+            initial={{ width: 0 }}
+            animate={{ width: isInView ? 160 : 0 }}
+            transition={{ duration: 1, delay: 2.1 }}
+          />
+        </motion.div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        {/* Main Footer Content */}
-        <div className="min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center justify-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            {/* Large Brand Text */}
-            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-              <h2 className="text-6xl sm:text-8xl lg:text-9xl xl:text-[12rem] font-bold text-white leading-none tracking-tight drop-shadow-2xl">
-                JOYA-IMMO
-              </h2>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-medium mt-4 drop-shadow-lg" 
-                 style={{ color: '#EADD8E' }}>
-                Votre partenaire immobilier en Côte d'Ivoire
-              </p>
-            </div>
+      {/* Enhanced decorative floating elements */}
+      <motion.div
+        className="absolute top-20 left-10 w-2 h-2 rounded-full shadow-lg"
+        style={{ backgroundColor: 'rgba(97, 97, 97, 0.4)' }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
+        transition={{ duration: 0.8, delay: 2.2 }}
+        animate={{
+          y: [0, -20, 0],
+          opacity: [0.4, 0.8, 0.4],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
 
-            {/* Interactive Elements */}
-            <div className="relative">
-              {/* Nous Contacter */}
-              <div className="absolute top-0 left-0 sm:top-[-100px] sm:left-[10%] lg:top-[-150px] lg:left-[15%]">
-                <div className="flex items-center space-x-3 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2" 
-                     style={{ 
-                       backgroundColor: '#EADD8E',
-                       borderColor: '#A07539'
-                     }}>
-                  <div className="w-3 h-3 rounded-full" 
-                       style={{ backgroundColor: '#252525' }}></div>
-                  <span className="text-sm font-medium" style={{ color: '#252525' }}>
-                    Nous Contacter
-                  </span>
-                </div>
-              </div>
+      <motion.div
+        className="absolute bottom-20 right-10 w-3 h-3 rounded-full shadow-lg"
+        style={{ backgroundColor: 'rgba(220, 220, 220, 0.3)' }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
+        transition={{ duration: 0.8, delay: 2.4 }}
+        animate={{
+          y: [0, 15, 0],
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
 
-              {/* Vendre un Bien */}
-              <div className="absolute bottom-0 left-0 sm:bottom-[-50px] sm:left-[5%] lg:bottom-[-80px] lg:left-[10%]">
-                <div className="flex items-center space-x-3 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2" 
-                     style={{ 
-                       backgroundColor: '#A07539',
-                       borderColor: '#EADD8E'
-                     }}>
-                  <div className="w-3 h-3 rounded-full" 
-                       style={{ backgroundColor: '#EADD8E' }}></div>
-                  <span className="text-sm font-medium text-white">
-                    Vendre un Bien
-                  </span>
-                </div>
-              </div>
+      <motion.div
+        className="absolute top-1/2 right-20 w-1 h-1 rounded-full shadow-md"
+        style={{ backgroundColor: 'rgba(97, 97, 97, 0.6)' }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
+        transition={{ duration: 0.8, delay: 2.6 }}
+        animate={{
+          x: [0, -10, 0],
+          opacity: [0.6, 1, 0.6],
+          scale: [1, 1.5, 1],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
 
-              {/* Louer un Bien */}
-              <div className="absolute top-0 right-0 sm:top-[-50px] sm:right-[10%] lg:top-[-80px] lg:right-[15%]">
-                <div className="flex items-center space-x-3 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2" 
-                     style={{ 
-                       backgroundColor: '#EADD8E',
-                       borderColor: '#A07539'
-                     }}>
-                  <div className="w-3 h-3 rounded-full" 
-                       style={{ backgroundColor: '#252525' }}></div>
-                  <span className="text-sm font-medium" style={{ color: '#252525' }}>
-                    Louer un Bien
-                  </span>
-                </div>
-              </div>
+      <motion.div
+        className="absolute top-1/3 left-1/4 w-1.5 h-1.5 rounded-full"
+        style={{ backgroundColor: 'rgba(220, 220, 220, 0.4)' }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
+        transition={{ duration: 0.8, delay: 2.8 }}
+        animate={{
+          scale: [1, 1.5, 1],
+          opacity: [0.4, 0.8, 0.4],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
 
-              {/* Acheter un Bien */}
-              <div className="absolute bottom-0 right-0 sm:bottom-[-80px] sm:right-[5%] lg:bottom-[-120px] lg:right-[10%]">
-                <div className="flex items-center space-x-3 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2" 
-                     style={{ 
-                       backgroundColor: '#A07539',
-                       borderColor: '#EADD8E'
-                     }}>
-                  <div className="w-3 h-3 rounded-full" 
-                       style={{ backgroundColor: '#EADD8E' }}></div>
-                  <span className="text-sm font-medium text-white">
-                    Acheter un Bien
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Navigation */}
-        <div className="backdrop-blur-sm border-t-2" 
-             style={{ 
-               backgroundColor: 'rgba(234, 221, 142, 0.95)',
-               borderColor: '#A07539'
-             }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
-              {/* Main Navigation Links */}
-              <nav className="flex flex-wrap justify-center lg:justify-start items-center gap-6 lg:gap-8">
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  Vendre un Bien
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  Acheter un Bien
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  Location
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  À Propos
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  Nos Services
-                </Link>
-              </nav>
-
-              {/* Social Media Links */}
-              <nav className="flex items-center gap-6 lg:gap-8">
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  Instagram
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  LinkedIn
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  Facebook
-                </Link>
-                <Link
-                  href="#"
-                  className="font-medium transition-colors text-sm sm:text-base hover:underline"
-                  style={{ color: '#252525' }}
-                >
-                  WhatsApp
-                </Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Bottom */}
-        <div style={{ backgroundColor: 'rgba(160, 117, 57, 0.95)' }} className="backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-              {/* Copyright */}
-              <div className="text-white text-sm font-medium">
-                Copyright JOYAimmo © 2024 - Tous droits réservés
-              </div>
-
-              {/* Legal Links */}
-              <div className="flex items-center space-x-6">
-                <Link href="#" className="text-white hover:text-gray-200 text-sm transition-colors font-medium">
-                  Politique de Confidentialité
-                </Link>
-                <Link href="#" className="text-white hover:text-gray-200 text-sm transition-colors font-medium">
-                  Conditions d'Utilisation
-                </Link>
-                <Link href="#" className="text-white hover:text-gray-200 text-sm transition-colors font-medium">
-                  Mentions Légales
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+      {/* Bottom gradient fade */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-32"
+        style={{
+          background: 'linear-gradient(to top, #3C3C3C 0%, transparent 100%)'
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ duration: 1, delay: 2.5 }}
+      />
+    </section>
   )
 }

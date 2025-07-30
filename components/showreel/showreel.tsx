@@ -26,7 +26,7 @@ export default function Showreel() {
   }
 
   return (
-    <section ref={containerRef} className="relative min-h-screen w-full overflow-hidden bg-[#3C3C3C]">
+    <section id="showreel" ref={containerRef} className="relative min-h-screen w-full overflow-hidden bg-[#3C3C3C]">
       {/* Video Background */}
       <motion.div
         className="absolute inset-0 w-full h-full"

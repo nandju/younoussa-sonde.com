@@ -102,7 +102,7 @@ export default function ActorGallery() {
 
   return (
     // <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#DCDCDC] overflow-hidden">
-      <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#3C3C3C] overflow-hidden">
+      <section id="galerie" ref={containerRef} className="relative py-24 lg:py-32 bg-[#3C3C3C] overflow-hidden">
       {/* Background pattern */}
       <motion.div
         className="absolute inset-0 opacity-5"

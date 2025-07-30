@@ -8,7 +8,7 @@ export default function ShortBio() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#3C3C3C] overflow-hidden">
+    <section id="propos" ref={containerRef} className="relative py-24 lg:py-32 bg-[#3C3C3C] overflow-hidden">
       {/* Background texture overlay */}
       <motion.div
         className="absolute inset-0"

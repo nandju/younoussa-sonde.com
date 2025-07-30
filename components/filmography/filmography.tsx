@@ -64,7 +64,7 @@ export default function Filmography() {
   }
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden" style={{ backgroundColor: '#3C3C3C' }}>
+    <section id="filmographie" ref={containerRef} className="relative overflow-hidden" style={{ backgroundColor: '#3C3C3C' }}>
       {/* Background texture */}
       <motion.div
         className="absolute inset-0"
