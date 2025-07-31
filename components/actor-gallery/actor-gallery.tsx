@@ -29,7 +29,7 @@ const galleryItems: GalleryItem[] = [
     title: "Silhouette de Rôle",
     category: "PERSONNAGE",
     description: "Instant capturé d'un rôle poignant, entre ombre et lumière.",
-    size: "medium",
+    size: "large",
   },
   {
     id: 3,

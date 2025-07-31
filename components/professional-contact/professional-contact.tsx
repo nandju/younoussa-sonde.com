@@ -10,13 +10,6 @@ import {
   User,
   MessageSquare,
   Send,
-  ExternalLink,
-  Award,
-  Film,
-  Users,
-  Camera,
-  Briefcase,
-  Play,
 } from "lucide-react"
 
 export default function ProfessionalContact() {
@@ -47,44 +40,6 @@ export default function ProfessionalContact() {
     setFormData({ name: "", email: "", phone: "", message: "" })
   }
 
-  const professionalLinks = [
-    {
-      name: "IMDb",
-      icon: Film,
-      url: "https://imdb.com/name/nm0000000",
-      description: "Filmographie professionnelle",
-    },
-    {
-      name: "Appel Direct",
-      icon: Phone,
-      url: "tel:+2250757123456",
-      description: "Contactez-moi directement",
-    },
-    {
-      name: "CastIt",
-      icon: Users,
-      url: "https://castit.com/profile",
-      description: "Plateforme de casting",
-    },
-    {
-      name: "Instagram",
-      icon: Camera,
-      url: "https://instagram.com/profile",
-      description: "Coulisses et actualités",
-    },
-    {
-      name: "LinkedIn",
-      icon: Briefcase,
-      url: "https://linkedin.com/in/profile",
-      description: "Réseau professionnel",
-    },
-    {
-      name: "YouTube",
-      icon: Play,
-      url: "https://youtube.com/channel",
-      description: "Contenu vidéo",
-    },
-  ]
 
   return (
     <section id="contacts" ref={containerRef} className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#3C3C3C' }}>
@@ -112,8 +67,8 @@ export default function ProfessionalContact() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left Column - Contact Form */}
+        <div className="flex flex-col justify-center items-center text-center">
+          {/* Contact Form */}
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
@@ -122,7 +77,7 @@ export default function ProfessionalContact() {
           >
             {/* Accent line */}
             <motion.div
-              className="flex justify-center lg:justify-start mb-8"
+              className="flex justify-center mb-8"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -334,157 +289,8 @@ export default function ProfessionalContact() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Professional Information */}
-          <motion.div
-            className="space-y-12"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 50 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            {/* Representation Section */}
-            <motion.div
-              className="backdrop-blur-sm p-8 rounded-2xl border"
-              style={{ 
-                backgroundColor: 'rgba(71, 70, 70, 0.3)',
-                borderColor: 'rgba(220, 220, 220, 0.1)'
-              }}
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
-              animate={{
-                opacity: isInView ? 1 : 0,
-                scale: isInView ? 1 : 0.9,
-                filter: isInView ? "blur(0px)" : "blur(15px)",
-              }}
-              transition={{ duration: 1.5, delay: 1 }}
-            >
-              <motion.h3
-                className="text-2xl font-light tracking-wider mb-6"
-                style={{ color: '#DCDCDC' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-              >
-                REPRÉSENTATION
-              </motion.h3>
-
-              <motion.div
-                className="space-y-6 font-poppins"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-                transition={{ duration: 0.8, delay: 1.3 }}
-              >
-                <div className="border-l-2 pl-6" style={{ borderColor: '#616161' }}>
-                  <h4 className="font-semibold mb-2" style={{ color: '#DCDCDC' }}>AGENT THÉÂTRAL</h4>
-                  <p className="font-medium" style={{ color: '#DCDCDC' }}>Sarah Johnson</p>
-                  <p className="text-sm" style={{ color: '#DCDCDC' }}>Agence Créative des Artistes</p>
-                  <a
-                    href="mailto:sarah.johnson@caa.com"
-                    className="transition-colors duration-300 text-sm hover:opacity-80"
-                    style={{ color: '#616161' }}
-                  >
-                    sarah.johnson@caa.com
-                  </a>
-                </div>
-
-                <div className="border-l-2 pl-6" style={{ borderColor: '#616161' }}>
-                  <h4 className="font-semibold mb-2" style={{ color: '#DCDCDC' }}>AGENT COMMERCIAL</h4>
-                  <p className="font-medium" style={{ color: '#DCDCDC' }}>Michael Chen</p>
-                  <p className="text-sm" style={{ color: '#DCDCDC' }}>Agence des Talents Unis</p>
-                  <a
-                    href="mailto:michael.chen@uta.com"
-                    className="transition-colors duration-300 text-sm hover:opacity-80"
-                    style={{ color: '#616161' }}
-                  >
-                    michael.chen@uta.com
-                  </a>
-                </div>
-
-                <div className="border-l-2 pl-6" style={{ borderColor: '#616161' }}>
-                  <h4 className="font-semibold mb-2" style={{ color: '#DCDCDC' }}>MANAGER</h4>
-                  <p className="font-medium" style={{ color: '#DCDCDC' }}>Emma Rodriguez</p>
-                  <p className="text-sm" style={{ color: '#DCDCDC' }}>Brillstein Entertainment</p>
-                  <a
-                    href="mailto:emma.rodriguez@brillstein.com"
-                    className="transition-colors duration-300 text-sm hover:opacity-80"
-                    style={{ color: '#616161' }}
-                  >
-                    emma.rodriguez@brillstein.com
-                  </a>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Professional Networks */}
-            <motion.div
-              className="backdrop-blur-sm p-8 rounded-2xl border"
-              style={{ 
-                backgroundColor: 'rgba(71, 70, 70, 0.3)',
-                borderColor: 'rgba(220, 220, 220, 0.1)'
-              }}
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
-              animate={{
-                opacity: isInView ? 1 : 0,
-                scale: isInView ? 1 : 0.9,
-                filter: isInView ? "blur(0px)" : "blur(15px)",
-              }}
-              transition={{ duration: 1.5, delay: 1.2 }}
-            >
-              <motion.h3
-                className="text-2xl font-light tracking-wider mb-6"
-                style={{ color: '#DCDCDC' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-                transition={{ duration: 0.8, delay: 1.4 }}
-              >
-                RESEAUX PROFESSIONNELS
-              </motion.h3>
-
-              <motion.div
-                className="grid grid-cols-2 gap-4 font-poppins"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-                transition={{ duration: 0.8, delay: 1.5 }}
-              >
-                {professionalLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-3 p-4 rounded-lg border transition-all duration-300"
-                    style={{ 
-                      backgroundColor: 'rgba(71, 70, 70, 0.3)',
-                      borderColor: 'rgba(220, 220, 220, 0.1)'
-                    }}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.9 }}
-                    transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(97, 97, 97, 0.5)'
-                      e.currentTarget.style.backgroundColor = 'rgba(97, 97, 97, 0.1)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(220, 220, 220, 0.1)'
-                      e.currentTarget.style.backgroundColor = 'rgba(71, 70, 70, 0.3)'
-                    }}
-                  >
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-opacity-30 transition-colors duration-300" style={{ backgroundColor: 'rgba(97, 97, 97, 0.2)' }}>
-                      <link.icon size={18} style={{ color: '#616161' }} />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-medium text-sm" style={{ color: '#DCDCDC' }}>{link.name}</h4>
-                      <p className="text-xs" style={{ color: '#616161' }}>{link.description}</p>
-                    </div>
-                    <ExternalLink
-                      size={14}
-                      className="group-hover:text-opacity-80 transition-colors duration-300"
-                      style={{ color: '#616161' }}
-                    />
-                  </motion.a>
-                ))}
-              </motion.div>
-            </motion.div>
-          </motion.div>
+          
+          
         </div>
       </div>
 
