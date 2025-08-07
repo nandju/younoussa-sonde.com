@@ -14,6 +14,11 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8])
 
+  // Fonction pour gérer l'appel
+  const handleCall = () => {
+    window.open('tel:+225 01 42 22 33 43', '_self')
+  }
+
   return (
     <section
       ref={containerRef}
@@ -92,25 +97,72 @@ export default function Hero() {
         />
 
         {/* Deuxième élément flottant - Bas gauche */}
+        <motion.div
+          className="absolute -bottom-6 -left-6 w-16 h-16 bg-gray-800/20 backdrop-blur-md rounded-full"
+          initial={{ opacity: 0, scale: 0, y: 0 }}
+          animate={imageInView ? {
+            opacity: 1,
+            scale: 1,
+            y: [0, 10, 0],
+          } : {
+            opacity: 0,
+            scale: 0,
+            y: 0,
+          }}
+          transition={{ 
+            duration: 4,
+            delay: 1.4,
+            repeat: imageInView ? Number.POSITIVE_INFINITY : 0,
+            ease: "easeInOut",
+          }}
+        />
+      </motion.div>
+
+      {/* Bouton d'appel fixe - Bottom Right */}
+      <motion.button
+        onClick={handleCall}
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl backdrop-blur-sm transition-all duration-300 ease-in-out transform hover:scale-110 active:scale-95 flex items-center justify-center group"
+        initial={{ opacity: 0, scale: 0, rotate: -180 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 0.6, delay: 2.2, ease: "easeOut" }}
+        whileHover={{ 
+          boxShadow: "0 25px 50px -12px rgba(34, 197, 94, 0.4)",
+          y: -2
+        }}
+        whileTap={{ scale: 0.9 }}
+      >
+        {/* Icône de téléphone */}
+        <svg 
+          className="w-7 h-7 transform group-hover:rotate-12 transition-transform duration-300" 
+          fill="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.19 11.19 0 003.48.56 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.19 11.19 0 00.56 3.48 1 1 0 01-.27 1.11l-2.17 2.2z"/>
+        </svg>
+
+        {/* Animation de pulsation */}
+        <motion.div
+          className="absolute inset-0 bg-green-500 rounded-full -z-10"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.7, 0, 0.7],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut"
+          }}
+        />
+      </motion.button>
+
+      {/* Tooltip pour le bouton d'appel */}
       <motion.div
-        className="absolute -bottom-6 -left-6 w-16 h-16 bg-gray-800/20 backdrop-blur-md rounded-full"
-        initial={{ opacity: 0, scale: 0, y: 0 }}
-        animate={imageInView ? {
-          opacity: 1,
-          scale: 1,
-          y: [0, 10, 0],
-        } : {
-          opacity: 0,
-          scale: 0,
-          y: 0,
-        }}
-        transition={{ 
-          duration: 4,
-          delay: 1.4,
-          repeat: imageInView ? Number.POSITIVE_INFINITY : 0,
-          ease: "easeInOut",
-        }}
-      />
+        className="fixed bottom-6 right-24 z-40 bg-black/80 text-white text-sm px-3 py-2 rounded-lg backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap"
+        initial={{ opacity: 0, x: 10 }}
+        animate={{ opacity: 0, x: 0 }}
+      >
+        Appelez-nous maintenant
+        <div className="absolute top-1/2 -right-1 w-2 h-2 bg-black/80 rotate-45 transform -translate-y-1/2" />
       </motion.div>
 
       {/* Indicateur de scroll */}
